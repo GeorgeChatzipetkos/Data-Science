@@ -1,7 +1,7 @@
 # Data-Science
 - Binary Logistic Regression
 
-"""Ruby
+```ruby
 # logistic regression predicts the probability of an event or class that is dependent on other factors.
 # Thus the output of logistic regression always lies between 0 and 1.
 # Because of this property it is commonly used for classification purpose.
@@ -186,5 +186,4 @@ def Find_Optimal_Cutoff(target, predicted):
 #make prediction on new test data
 #create new df similar to X_test
 #y_pred=logreg.predict(df2)
-
-"""
+```
