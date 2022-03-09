@@ -124,7 +124,7 @@ df = reduce(lambda  left,right: pd.merge(left,right,on=['ID'], how='outer'), dat
 IDs = ",".join([str(element) for element in df['User ID'].tolist()])
 ```
 
-- Datetime localization
+- Assign timezone (UTC to Athens time)
 
 ```ruby
 startDate = "2021-01-01" 
@@ -133,15 +133,15 @@ endDate = "2021-12-31"
 startDateTime = startDate + " 00:00:00"
 endDateTime = endDate + " 23:59:59"
 
-UserDatastartDateTime = timezone('Europe/Nicosia').localize(datetime.strptime(startDateTime, "%Y-%m-%d %H:%M:%S")).astimezone(timezone('UTC'))
+UserDatastartDateTime = timezone('Europe/Athens').localize(datetime.strptime(startDateTime, "%Y-%m-%d %H:%M:%S")).astimezone(timezone('UTC'))
 UserDatastartDateTime = UserDatastartDateTime.strftime("%Y-%m-%d %H:%M:%S")
-UserDataendDateTime = timezone('Europe/Nicosia').localize(datetime.strptime(endDateTime, "%Y-%m-%d %H:%M:%S")).astimezone(timezone('UTC'))
+UserDataendDateTime = timezone('Europe/Athens').localize(datetime.strptime(endDateTime, "%Y-%m-%d %H:%M:%S")).astimezone(timezone('UTC'))
 UserDataendDateTime = UserDataendDateTime.strftime("%Y-%m-%d %H:%M:%S")
 ```
 
-- Datetime unlocalization
+- Stip timezone from datetime object
 
 ```ruby
-df['Registration Date'] = df['Registration Date'].dt.tz_convert('Europe/Nicosia')
+df['Registration Date'] = df['Registration Date'].dt.tz_convert('Europe/Athens')
 df['Registration Date'] = pd.to_datetime(df['Registration Date']).dt.tz_localize(None)
 ```
