@@ -123,3 +123,25 @@ df = reduce(lambda  left,right: pd.merge(left,right,on=['ID'], how='outer'), dat
 ```ruby
 IDs = ",".join([str(element) for element in df['User ID'].tolist()])
 ```
+
+- Datetime localization
+
+```ruby
+startDate = "2021-01-01" 
+endDate = "2021-12-31"
+
+startDateTime = startDate + " 00:00:00"
+endDateTime = endDate + " 23:59:59"
+
+UserDatastartDateTime = timezone('Europe/Nicosia').localize(datetime.strptime(startDateTime, "%Y-%m-%d %H:%M:%S")).astimezone(timezone('UTC'))
+UserDatastartDateTime = UserDatastartDateTime.strftime("%Y-%m-%d %H:%M:%S")
+UserDataendDateTime = timezone('Europe/Nicosia').localize(datetime.strptime(endDateTime, "%Y-%m-%d %H:%M:%S")).astimezone(timezone('UTC'))
+UserDataendDateTime = UserDataendDateTime.strftime("%Y-%m-%d %H:%M:%S")
+```
+
+- Datetime unlocalization
+
+```ruby
+df['Registration Date'] = df['Registration Date'].dt.tz_convert('Europe/Nicosia')
+df['Registration Date'] = pd.to_datetime(df['Registration Date']).dt.tz_localize(None)
+```
