@@ -145,3 +145,12 @@ UserDataendDateTime = UserDataendDateTime.strftime("%Y-%m-%d %H:%M:%S")
 df['Registration Date'] = df['Registration Date'].dt.tz_convert('Europe/Athens')
 df['Registration Date'] = pd.to_datetime(df['Registration Date']).dt.tz_localize(None)
 ```
+
+- String to date object
+
+```ruby
+from datetime import date
+
+endDate = "2022-02-28"
+#date_object = datetime.strptime(endDate, '%Y-%m-%d').date()
+```
