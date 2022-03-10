@@ -78,12 +78,12 @@ for group, data in ClosedTrades.groupby('Month'):
         j += expected_rows
 writer.save()
 ```
-- loop through multiple dfs
+- loop and filter through multiple dfs
 
 ```ruby
 output_list = []
 for df in [df1, df2, df3]:
-    df['Month'] =df['Date'].apply(lambda x : x.strftime('%Y-%m'))
+    df = df.loc[df["Country"].str.contains("Greece")]
     output_list.append(df)
   
 df1 = output_list[0]
