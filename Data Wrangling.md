@@ -3,7 +3,6 @@
 
 ```ruby
 import glob
-import pandas as pd
 import os
   
 #list with all .xlsx files in the folder
@@ -19,7 +18,6 @@ combined_excel.to_excel(r'C:\Users\file.xlsx', index=False)
 - Combine Multiple Excel Worksheets
 
 ```ruby
-import pandas as pd
 
 #Combine Multiple Excel Worksheets Into a Single Pandas Dataframe
 df = pd.concat(pd.read_excel(r'C:\Users\file.xlsx', sheet_name=None), ignore_index=True)
@@ -37,7 +35,6 @@ df = (pd.concat(dfs)
 - Read last column from Excel
 
 ```ruby
-import pandas as pd
 
 xl = pd.ExcelFile(r'C:\Users\file.xlsx')
 ncols = xl.book.sheets()[0].ncols
