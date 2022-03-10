@@ -126,7 +126,6 @@ IDs = ",".join([str(element) for element in df['User ID'].tolist()])
 ```ruby
 from pytz import timezone
 from datetime import datetime, timedelta
-from datetime import timezone as timez
 
 startDate = "2021-01-01" 
 endDate = "2021-12-31"
@@ -145,10 +144,20 @@ UserDataendDateTime = UserDataendDateTime.strftime("%Y-%m-%d %H:%M:%S")
 ```ruby
 from pytz import timezone
 from datetime import datetime, timedelta
-from datetime import timezone as timez
 
 df['Registration Date'] = df['Registration Date'].dt.tz_convert('Europe/Athens')
 df['Registration Date'] = pd.to_datetime(df['Registration Date']).dt.tz_localize(None)
+```
+- String datetime to timestamp
+
+```ruby
+from datetime import datetime, timedelta
+from datetime import timezone as timez
+
+endDate = "2021-12-31"
+endDateTime = endDate + " 23:59:59"
+
+MT5endDate = datetime.strptime(endDateTime, "%Y-%m-%d %H:%M:%S").replace(tzinfo = timez.utc).timestamp()
 ```
 
 - String to date object
