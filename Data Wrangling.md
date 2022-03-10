@@ -124,6 +124,10 @@ IDs = ",".join([str(element) for element in df['User ID'].tolist()])
 - Assign timezone (UTC to Athens time)
 
 ```ruby
+from pytz import timezone
+from datetime import datetime, timedelta
+from datetime import timezone as timez
+
 startDate = "2021-01-01" 
 endDate = "2021-12-31"
 
@@ -139,6 +143,10 @@ UserDataendDateTime = UserDataendDateTime.strftime("%Y-%m-%d %H:%M:%S")
 - Stip timezone from datetime object
 
 ```ruby
+from pytz import timezone
+from datetime import datetime, timedelta
+from datetime import timezone as timez
+
 df['Registration Date'] = df['Registration Date'].dt.tz_convert('Europe/Athens')
 df['Registration Date'] = pd.to_datetime(df['Registration Date']).dt.tz_localize(None)
 ```
