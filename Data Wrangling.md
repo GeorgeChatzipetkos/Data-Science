@@ -27,8 +27,7 @@ combined_excel.to_excel(r'C:\Users\file.xlsx', index=False)
 
 - Combine Multiple Excel Worksheets
 
-```ruby
-
+```python
 #Combine Multiple Excel Worksheets Into a Single Pandas Dataframe
 df = pd.concat(pd.read_excel(r'C:\Users\file.xlsx', sheet_name=None), ignore_index=True)
 
@@ -44,8 +43,7 @@ df = (pd.concat(dfs)
 
 - Read last column from Excel
 
-```ruby
-
+```python
 xl = pd.ExcelFile(r'C:\Users\file.xlsx')
 ncols = xl.book.sheets()[0].ncols
 df = xl.parse(0, usecols=[0, 1, ncols-1])
@@ -53,7 +51,7 @@ df = xl.parse(0, usecols=[0, 1, ncols-1])
 
 - Replace file names in a folder
 
-```ruby
+```python
 import os
 
 path = os.chdir(r'N:\...') # set current working directory above to the required path
@@ -65,7 +63,7 @@ for filename in filenames:
 
 - Split to multiple Excel sheets
 
-```ruby
+```python
 """ split to multiple sheets and check for Excel limit number of rows """
 
 writer = pd.ExcelWriter(r'C:\Users\file.xlsx')
@@ -90,7 +88,7 @@ writer.save()
 ```
 - loop and filter through multiple dfs
 
-```ruby
+```python
 output_list = []
 for df in [df1, df2, df3]:
     df = df.loc[df["Country"].str.contains("Greece")]
@@ -103,7 +101,7 @@ df3 = output_list[2]
 
 - create conditional column
 
-```ruby
+```python
 conditions = [
     ((Balance['Amount USD'] >= 500) & (Balance['Amount USD'] < 1000)),
     ((Balance['Amount USD'] >= 1000) & (Balance['Amount USD'] < 2500)),
@@ -120,20 +118,20 @@ Balance['CPA'] = np.select(conditions, choices, default=0)
 
 - outer join multiple dfs
 
-```ruby
+```python
 data_frames = [df1,df2,df3,df4]
 df = reduce(lambda  left,right: pd.merge(left,right,on=['ID'], how='outer'), data_frames).fillna(0)
 ```
 
 - Textjoin a df column
 
-```ruby
+```python
 IDs = ",".join([str(element) for element in df['User ID'].tolist()])
 ```
 
 - Assign timezone (UTC to Athens time)
 
-```ruby
+```python
 from pytz import timezone
 from datetime import datetime, timedelta
 
@@ -151,7 +149,7 @@ UserDataendDateTime = UserDataendDateTime.strftime("%Y-%m-%d %H:%M:%S")
 
 - Stip timezone from datetime object
 
-```ruby
+```python
 from pytz import timezone
 from datetime import datetime, timedelta
 
@@ -160,7 +158,7 @@ df['Registration Date'] = pd.to_datetime(df['Registration Date']).dt.tz_localize
 ```
 - String datetime to timestamp
 
-```ruby
+```python
 from datetime import datetime, timedelta
 from datetime import timezone as timez
 
@@ -172,7 +170,7 @@ MT5endDate = datetime.strptime(endDateTime, "%Y-%m-%d %H:%M:%S").replace(tzinfo 
 
 - String to date object
 
-```ruby
+```python
 from datetime import date
 
 endDate = "2022-02-28"
@@ -181,13 +179,13 @@ date_object = datetime.strptime(endDate, '%Y-%m-%d').date()
 
 - Year-Month from date
 
-```ruby
+```python
 df['Year_Month'] = df['Date'].apply(lambda x: x.strftime('%Y-%m'))
 ```
 
 - Import pivot table from excel to Dataframe
 
-```ruby
+```python
 import openpyxl
 from openpyxl import load_workbook
 
@@ -214,7 +212,7 @@ df = pd.DataFrame(data=rows_list[1:], index=None, columns=rows_list[0])
 
 - left join
 
-```ruby
+```python
 MappingCountry = dict(zip(Countries["Country Code"], Countries["Country"]))
 df["Country"] = df["Country Code"].map(lambda x: MappingCountry.get(x,x))
 ```
