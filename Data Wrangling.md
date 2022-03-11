@@ -2,7 +2,7 @@
 
 - view a dataframe in excel
 
-```ruby
+```python
 import pandas as pd
 import xlwings as xw
 
@@ -11,7 +11,7 @@ xw.view(df)
 
 - Combine multiple Excel files
 
-```ruby
+```python
 import glob
 import os
   
