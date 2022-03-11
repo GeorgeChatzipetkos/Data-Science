@@ -1,4 +1,14 @@
 # Data-Wrangling
+
+- view a dataframe in excel
+
+```ruby
+import xlwings as xw
+import pandas as pd
+
+xw.view(df)
+```
+
 - Combine multiple Excel files
 
 ```ruby
