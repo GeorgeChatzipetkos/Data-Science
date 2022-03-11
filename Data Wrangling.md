@@ -3,8 +3,8 @@
 - view a dataframe in excel
 
 ```ruby
-import xlwings as xw
 import pandas as pd
+import xlwings as xw
 
 xw.view(df)
 ```
