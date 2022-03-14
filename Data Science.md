@@ -1,7 +1,7 @@
 # Data-Science
-- Binary Logistic Regression
+- **Binary Logistic Regression**
 
-```ruby
+```python
 # logistic regression predicts the probability of an event or class that is dependent on other factors.
 # Thus the output of logistic regression always lies between 0 and 1.
 # Because of this property it is commonly used for classification purpose.
@@ -188,9 +188,9 @@ def Find_Optimal_Cutoff(target, predicted):
 #y_pred=logreg.predict(df2)
 ```
 
-- Multiple Linear Regression
+- **Multiple Linear Regression**
 
-```ruby
+```python
 import pandas as pd  
 import numpy as np  
 import matplotlib.pyplot as plt  
@@ -462,9 +462,9 @@ plt.show()
 regressor.predict([[6.8, 0.5, 0.3, 2.1, 0.058, 20, 45, 0.9947, 3.34, 0.7, 10.0]])
 ```
 
-- K-means clustering
+- **K-means clustering**
 
-```ruby
+```python
 import pandas as pd
 #import numpy as np
 import seaborn as sns
@@ -530,9 +530,9 @@ plt.xlabel('Gateway ID')
 plt.ylabel('Deposit Amount USD')
 ```
 
-- PCA with K-means clustering
+- **PCA with K-means clustering**
 
-```ruby
+```python
 import numpy as np
 import pandas as pd
 import seaborn as sns
