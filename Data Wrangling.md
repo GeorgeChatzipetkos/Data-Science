@@ -86,6 +86,40 @@ for group, data in ClosedTrades.groupby('Month'):
         j += expected_rows
 writer.save()
 ```
+- Import pivot table from excel to Dataframe
+
+```python
+import openpyxl
+from openpyxl import load_workbook
+
+wb = load_workbook(filename = r'N:\.....xlsx')
+sheet = wb['Sheet1']
+lookup_table = sheet.tables['Table1']
+
+# Access the data in the table range
+data = sheet[lookup_table.ref]
+rows_list = []
+
+# Loop through each row and get the values in the cells
+for row in data:
+    # Get a list of all columns in each row
+    cols = []
+    for col in row:
+        cols.append(col.value)
+    rows_list.append(cols)
+
+# Create a pandas dataframe from the rows_list.
+# The first row is the column names
+df = pd.DataFrame(data=rows_list[1:], index=None, columns=rows_list[0])
+```
+
+- left join
+
+```python
+MappingCountry = dict(zip(Countries["Country Code"], Countries["Country"]))
+df["Country"] = df["Country Code"].map(lambda x: MappingCountry.get(x,x))
+```
+
 - loop and filter through multiple dfs
 
 ```python
@@ -181,38 +215,4 @@ date_object = datetime.strptime(endDate, '%Y-%m-%d').date()
 
 ```python
 df['Year_Month'] = df['Date'].apply(lambda x: x.strftime('%Y-%m'))
-```
-
-- Import pivot table from excel to Dataframe
-
-```python
-import openpyxl
-from openpyxl import load_workbook
-
-wb = load_workbook(filename = r'N:\.....xlsx')
-sheet = wb['Sheet1']
-lookup_table = sheet.tables['Table1']
-
-# Access the data in the table range
-data = sheet[lookup_table.ref]
-rows_list = []
-
-# Loop through each row and get the values in the cells
-for row in data:
-    # Get a list of all columns in each row
-    cols = []
-    for col in row:
-        cols.append(col.value)
-    rows_list.append(cols)
-
-# Create a pandas dataframe from the rows_list.
-# The first row is the column names
-df = pd.DataFrame(data=rows_list[1:], index=None, columns=rows_list[0])
-```
-
-- left join
-
-```python
-MappingCountry = dict(zip(Countries["Country Code"], Countries["Country"]))
-df["Country"] = df["Country Code"].map(lambda x: MappingCountry.get(x,x))
 ```
