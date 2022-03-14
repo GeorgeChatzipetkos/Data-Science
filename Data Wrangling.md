@@ -1,6 +1,6 @@
 # Data-Wrangling
 
-- view a dataframe in excel
+- **view a dataframe in excel**
 
 ```python
 import pandas as pd
