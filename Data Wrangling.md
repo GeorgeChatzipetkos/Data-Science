@@ -132,8 +132,17 @@ df1 = output_list[0]
 df2 = output_list[1]  
 df3 = output_list[2]
 ```
-
 - **create conditional column**
+
+```python
+df.loc[condition, new_column_name] = new_column_value
+
+#OR
+
+df['NewCol'] = np.where((condition),'NewValue',df['OldCol'])
+```
+
+- **create multi-conditional column**
 
 ```python
 conditions = [
