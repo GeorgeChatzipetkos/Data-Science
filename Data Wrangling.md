@@ -113,13 +113,6 @@ for row in data:
 df = pd.DataFrame(data=rows_list[1:], index=None, columns=rows_list[0])
 ```
 
-- **left join**
-
-```python
-MappingCountry = dict(zip(Countries["Country Code"], Countries["Country"]))
-df["Country"] = df["Country Code"].map(lambda x: MappingCountry.get(x,x))
-```
-
 - **loop and filter through multiple dfs**
 
 ```python
@@ -157,6 +150,13 @@ conditions = [
 choices = [0, 10, 20, 30, 40, 50, 60]
 
 Balance['CPA'] = np.select(conditions, choices, default=0)
+```
+
+- **left join**
+
+```python
+MappingCountry = dict(zip(Countries["Country Code"], Countries["Country"]))
+df["Country"] = df["Country Code"].map(lambda x: MappingCountry.get(x,x))
 ```
 
 - **outer join multiple dfs**
