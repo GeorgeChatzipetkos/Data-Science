@@ -9,7 +9,7 @@ import xlwings as xw
 xw.view(df)
 ```
 
-- Combine multiple Excel files
+- **Combine multiple Excel files**
 
 ```python
 import glob
@@ -25,7 +25,7 @@ combined_excel = pd.concat([pd.read_excel(f, header = 0).assign(FileName=os.path
 combined_excel.to_excel(r'C:\Users\file.xlsx', index=False)
 ```
 
-- Combine Multiple Excel Worksheets
+- **Combine Multiple Excel Worksheets**
 
 ```python
 #Combine Multiple Excel Worksheets Into a Single Pandas Dataframe
@@ -41,7 +41,7 @@ df = (pd.concat(dfs)
         .reset_index())
 ```
 
-- Read last column from Excel
+- **Read last column from Excel**
 
 ```python
 xl = pd.ExcelFile(r'C:\Users\file.xlsx')
@@ -49,7 +49,7 @@ ncols = xl.book.sheets()[0].ncols
 df = xl.parse(0, usecols=[0, 1, ncols-1])
 ```
 
-- Replace file names in a folder
+- **Replace file names in a folder**
 
 ```python
 import os
@@ -61,7 +61,7 @@ for filename in filenames:
     os.rename(filename, filename.replace("nm", "NM").replace("mt4 NM", "NM").replace("mt5 NM", "NM").replace("NM mt4", "NM").replace("NM mt5", "NM"))
 ```
 
-- Split to multiple Excel sheets
+- **Split to multiple Excel sheets**
 
 ```python
 """ split to multiple sheets and check for Excel limit number of rows """
@@ -86,7 +86,7 @@ for group, data in ClosedTrades.groupby('Month'):
         j += expected_rows
 writer.save()
 ```
-- Import pivot table from excel to Dataframe
+- **Import pivot table from excel to Dataframe**
 
 ```python
 import openpyxl
@@ -113,14 +113,14 @@ for row in data:
 df = pd.DataFrame(data=rows_list[1:], index=None, columns=rows_list[0])
 ```
 
-- left join
+- **left join**
 
 ```python
 MappingCountry = dict(zip(Countries["Country Code"], Countries["Country"]))
 df["Country"] = df["Country Code"].map(lambda x: MappingCountry.get(x,x))
 ```
 
-- loop and filter through multiple dfs
+- **loop and filter through multiple dfs**
 
 ```python
 output_list = []
@@ -133,7 +133,7 @@ df2 = output_list[1]
 df3 = output_list[2]
 ```
 
-- create conditional column
+- **create conditional column**
 
 ```python
 conditions = [
@@ -150,20 +150,20 @@ choices = [0, 10, 20, 30, 40, 50, 60]
 Balance['CPA'] = np.select(conditions, choices, default=0)
 ```
 
-- outer join multiple dfs
+- **outer join multiple dfs**
 
 ```python
 data_frames = [df1,df2,df3,df4]
 df = reduce(lambda  left,right: pd.merge(left,right,on=['ID'], how='outer'), data_frames).fillna(0)
 ```
 
-- Textjoin a df column
+- **Textjoin a df column**
 
 ```python
 IDs = ",".join([str(element) for element in df['User ID'].tolist()])
 ```
 
-- Assign timezone (UTC to Athens time)
+- **Assign timezone (UTC to Athens time)**
 
 ```python
 from pytz import timezone
@@ -181,7 +181,7 @@ UserDataendDateTime = timezone('Europe/Athens').localize(datetime.strptime(endDa
 UserDataendDateTime = UserDataendDateTime.strftime("%Y-%m-%d %H:%M:%S")
 ```
 
-- Stip timezone from datetime object
+- **Stip timezone from datetime object**
 
 ```python
 from pytz import timezone
@@ -190,7 +190,7 @@ from datetime import datetime, timedelta
 df['Registration Date'] = df['Registration Date'].dt.tz_convert('Europe/Athens')
 df['Registration Date'] = pd.to_datetime(df['Registration Date']).dt.tz_localize(None)
 ```
-- String datetime to timestamp
+- **String datetime to timestamp**
 
 ```python
 from datetime import datetime, timedelta
@@ -202,7 +202,7 @@ endDateTime = endDate + " 23:59:59"
 MT5endDate = datetime.strptime(endDateTime, "%Y-%m-%d %H:%M:%S").replace(tzinfo = timez.utc).timestamp()
 ```
 
-- String to date object
+- **String to date object**
 
 ```python
 from datetime import date
@@ -211,7 +211,7 @@ endDate = "2022-02-28"
 date_object = datetime.strptime(endDate, '%Y-%m-%d').date()
 ```
 
-- Year-Month from date
+- **Year-Month from date**
 
 ```python
 df['Year_Month'] = df['Date'].apply(lambda x: x.strftime('%Y-%m'))
