@@ -172,6 +172,12 @@ df = reduce(lambda  left,right: pd.merge(left,right,on=['ID'], how='outer'), dat
 IDs = ",".join([str(element) for element in df['User ID'].tolist()])
 ```
 
+- **Get the name of a df in str format**
+
+```python
+name =[x for x in globals() if globals()[x] is df][0]
+```
+
 - **Assign timezone (UTC to Athens time)**
 
 ```python
