@@ -178,6 +178,13 @@ IDs = ",".join([str(element) for element in df['User ID'].tolist()])
 name =[x for x in globals() if globals()[x] is df][0]
 ```
 
+- **Check for missing values**
+
+```python
+null=pd.DataFrame(df.isnull().sum(),columns=["Null Values"])
+null["% Missing Values"]=(df.isna().sum()/len(df)*100)
+```
+
 - **Assign timezone (UTC to Athens time)**
 
 ```python
