@@ -238,3 +238,14 @@ date_object = datetime.strptime(endDate, '%Y-%m-%d').date()
 ```python
 df['Year_Month'] = df['Date'].apply(lambda x: x.strftime('%Y-%m'))
 ```
+
+- **check if website is scrapable**
+
+```python
+import requests
+from bs4 import BeautifulSoup 
+
+# The output to this should be 200. Anything other than 200 means that the website your trying to scrape either does not allow web scraping or allows partially.
+r=requests.get("url")
+r.status_code
+```
