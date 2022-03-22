@@ -86,7 +86,7 @@ for group, data in ClosedTrades.groupby('Month'):
         j += expected_rows
 writer.save()
 ```
-- **Import pivot table from excel to Dataframe**
+- **Import table from excel as Dataframe**
 
 ```python
 import openpyxl
