@@ -181,7 +181,7 @@ name =[x for x in globals() if globals()[x] is df][0]
 - **Check for missing values**
 
 ```python
-null=pd.DataFrame(df.isnull().sum(),columns=["Null Values"])
+null=pd.DataFrame(df.isnull().sum(),columns=["Missing Values"])
 null["% Missing Values"]=(df.isna().sum()/len(df)*100)
 ```
 
