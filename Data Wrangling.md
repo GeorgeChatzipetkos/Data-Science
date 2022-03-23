@@ -185,6 +185,18 @@ null=pd.DataFrame(df.isnull().sum(),columns=["Null Values"])
 null["% Missing Values"]=(df.isna().sum()/len(df)*100)
 ```
 
+- **parse csv dates**
+
+```python
+df = pd.read_csv('file.csv', index_col=None,parse_dates=['DateCol'])
+```
+
+- **datetime Col to date**
+
+```python
+df['date'] = pd.to_datetime(df['event_time']).dt.date
+```
+
 - **Assign timezone (UTC to Athens time)**
 
 ```python
