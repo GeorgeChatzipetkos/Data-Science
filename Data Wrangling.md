@@ -185,6 +185,17 @@ null=pd.DataFrame(df.isnull().sum(),columns=["Null Values"])
 null["% Missing Values"]=(df.isna().sum()/len(df)*100)
 ```
 
+- **Value counts**
+
+```python
+dfCount = pd.concat([
+    df['Col'].value_counts(dropna=False),
+    df['Col'].value_counts(dropna=False,normalize=True),
+    df['Col'].value_counts(dropna=False,normalize=True).mul(100).round(1).astype(str) + '%'],
+    axis= 1)
+dfCount.columns = ['counts', 'Percentage', 'str%']
+```
+
 - **parse csv dates**
 
 ```python
