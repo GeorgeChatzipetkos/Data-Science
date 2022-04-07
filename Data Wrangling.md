@@ -178,6 +178,16 @@ IDs = ",".join([str(element) for element in df['User ID'].tolist()])
 name =[x for x in globals() if globals()[x] is df][0]
 ```
 
+- **Suppress scientific notations**
+
+```python
+pd.set_option('display.float_format', lambda x: '%.4f' % x)
+OR
+pd.options.display.float_format = '{:.4f}'.format
+OR
+df.applymap(lambda x: '%.4f' % x)
+```
+
 - **Check for missing values**
 
 ```python
