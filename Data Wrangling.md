@@ -272,6 +272,15 @@ date_object = datetime.strptime(endDate, '%Y-%m-%d').date()
 df['Year_Month'] = df['Date'].apply(lambda x: x.strftime('%Y-%m'))
 ```
 
+- **First & Last day of previous month**
+
+```python
+from datetime import date, timedelta
+
+FirstDay = ((date.today().replace(day=1)- timedelta(days=1)).replace(day=1)).strftime('%Y-%m-%d')
+LastDay = (date.today().replace(day=1)- timedelta(days=1)).strftime('%Y-%m-%d')
+```
+
 - **check if website is scrapable**
 
 ```python
