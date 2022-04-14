@@ -266,6 +266,12 @@ endDate = "2022-02-28"
 date_object = datetime.strptime(endDate, '%Y-%m-%d').date()
 ```
 
+- **Timestamp to Datetime **
+
+```python
+df['DatetimeCol'] = pd.to_datetime(df['timeStampCol'],unit='s')
+```
+
 - **Year-Month from date**
 
 ```python
