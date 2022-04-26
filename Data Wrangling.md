@@ -172,6 +172,12 @@ df = reduce(lambda  left,right: pd.merge(left,right,on=['ID'], how='outer'), dat
 IDs = ",".join([str(element) for element in df['User ID'].tolist()])
 ```
 
+- **Insert column at specific position**
+
+```python
+df.insert(3, 'colname', col) # inserts at third column
+```
+
 - **Get the name of a df in str format**
 
 ```python
