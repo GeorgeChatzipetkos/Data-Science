@@ -303,3 +303,17 @@ from bs4 import BeautifulSoup
 r=requests.get("url")
 r.status_code
 ```
+
+- **Time Diff in text format**
+
+```python
+from dateutil.relativedelta import relativedelta
+
+df["diff"] = df.apply(lambda x: relativedelta(x['End'], x['Start']), axis=1)
+df["diff text"] = df.apply(lambda x: "%d days %d hours %d minutes %d seconds" % (x['diff'].days, x['diff'].hours, x['diff'].minutes,x['diff'].seconds), axis=1)
+
+OR
+
+df["diff Seconds"] = df.apply(lambda row: (row["End"] - row["Start"]).total_seconds(), axis = 1) # Diff in seconds
+df["diff text"] = df["diff Seconds"].apply(lambda x: timedelta(seconds = x))
+```
