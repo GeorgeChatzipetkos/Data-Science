@@ -314,6 +314,6 @@ df["diff text"] = df.apply(lambda x: "%d days %d hours %d minutes %d seconds" % 
 
 OR
 
-df["diff Seconds"] = df.apply(lambda row: (row["End"] - row["Start"]).total_seconds(), axis = 1) # Diff in seconds
+df["diff Seconds"] = df.apply(lambda x: (x["End"] - x["Start"]).total_seconds(), axis = 1) # Diff in seconds
 df["diff text"] = df["diff Seconds"].apply(lambda x: timedelta(seconds = x))
 ```
