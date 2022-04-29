@@ -166,6 +166,12 @@ data_frames = [df1,df2,df3,df4]
 df = reduce(lambda  left,right: pd.merge(left,right,on=['ID'], how='outer'), data_frames).fillna(0)
 ```
 
+- **Check if value from one df exists in another df**
+
+```python
+Df1.assign(InDf2=Df1.Col.isin(Df2.Col).astype(int))
+```
+
 - **Textjoin a df column**
 
 ```python
