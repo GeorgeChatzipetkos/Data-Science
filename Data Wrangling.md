@@ -61,10 +61,10 @@ for filename in filenames:
     os.rename(filename, filename.replace("nm", "NM").replace("mt4 NM", "NM").replace("mt5 NM", "NM").replace("NM mt4", "NM").replace("NM mt5", "NM"))
 ```
 
-- **Split to multiple Excel sheets**
+- **Split to multiple Excel sheets (group by existing column)**
 
 ```python
-""" split to multiple sheets and check for Excel limit number of rows """
+""" split to multiple sheets and check for Excel limit number of rows (sheets are named per row number)"""
 
 writer = pd.ExcelWriter(r'C:\Users\file.xlsx')
 for group, data in ClosedTrades.groupby('Month'):
@@ -86,6 +86,19 @@ for group, data in ClosedTrades.groupby('Month'):
         j += expected_rows
 writer.save()
 ```
+
+- **Split to multiple Excel sheets (group by given list)**
+
+```python
+Names = ['Andr','Est','Myr','Pab','Kons','Zer','Sab','Azi','Ann']
+GroupLength = math.floor(len(df)/len(Names)+1) # set nr of rows to slice df
+
+writer =  pd.ExcelWriter(r'C:\Users\georgiosc\Downloads\output.xlsx')
+for count,i in enumerate(range(0, len(df), GroupLength)):
+    df[i : i+GroupLength].to_excel(writer, sheet_name=Names[count], index=False, header=True)
+writer.save()
+```
+
 - **Import table from excel as Dataframe**
 
 ```python
