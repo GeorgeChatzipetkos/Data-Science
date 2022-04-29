@@ -218,6 +218,17 @@ dfCount = pd.concat([
 dfCount.columns = ['counts', 'Percentage', 'str%']
 ```
 
+- **check if website is scrapable**
+
+```python
+import requests
+from bs4 import BeautifulSoup 
+
+# The output to this should be 200. Anything other than 200 means that the website your trying to scrape either does not allow web scraping or allows partially.
+r=requests.get("url")
+r.status_code
+```
+
 - **parse csv dates**
 
 ```python
@@ -297,17 +308,6 @@ from datetime import date, timedelta
 
 FirstDay = ((date.today().replace(day=1)- timedelta(days=1)).replace(day=1)).strftime('%Y-%m-%d')
 LastDay = (date.today().replace(day=1)- timedelta(days=1)).strftime('%Y-%m-%d')
-```
-
-- **check if website is scrapable**
-
-```python
-import requests
-from bs4 import BeautifulSoup 
-
-# The output to this should be 200. Anything other than 200 means that the website your trying to scrape either does not allow web scraping or allows partially.
-r=requests.get("url")
-r.status_code
 ```
 
 - **Time Diff in text format**
