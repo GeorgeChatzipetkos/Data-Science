@@ -165,6 +165,26 @@ choices = [0, 10, 20, 30, 40, 50, 60]
 Balance['CPA'] = np.select(conditions, choices, default=0)
 ```
 
+- **df with COUNTIFS**
+
+```python
+df_list = []
+for group,data  in Users.groupby('Year'):
+    df = pd.DataFrame({
+    'Time Intervals': ['Less than or equal to 1 day', '1 to 7 days', '7 to 30 days', '30 to 90 days', 'more than 90 days'],
+    'Count': [
+                        data["Time To live Days"][data["Time To live Days"]<=1].count(),
+                        data["Time To live Days"][(data["Time To live Days"]>1) & (data["Time To live Days"]<=7)].count(),
+                        data["Time To live Days"][(data["Time To live Days"]>7) & (data["Time To live Days"]<=30)].count(),
+                        data["Time To live Days"][(data["Time To live Days"]>30) & (data["Time To live Days"]<=90)].count(),
+                        data["Time To live Days"][data["Time To live Days"]>90].count()
+                        ]},index = [group]*5)
+    df_list.append(df)
+    
+UsersPivot = pd.concat(df_list).rename_axis('Year').reset_index()
+UsersPivot = UsersPivot.pivot(index='Time Intervals',columns='Year',values='Count')
+```
+
 - **left join**
 
 ```python
