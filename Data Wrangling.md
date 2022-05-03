@@ -183,6 +183,16 @@ for group,data  in Users.groupby('Year'):
     
 UsersPivot = pd.concat(df_list).rename_axis('Year').reset_index()
 UsersPivot = UsersPivot.pivot(index='Time Intervals',columns='Year',values='Count')
+
+OR
+
+#with bins
+cut_labels = ['<=1 day', '>1 <=7 days', '>7 <=30 days', '>30 <=90 days','>90 days']
+cut_bins = [0, 1, 7, 30, 90,Users["Time To live Days"].max()]
+Users['cut_category'] = pd.cut(Users['Time To live Days'], bins=cut_bins, labels=cut_labels)
+
+UsersPivot = Users.groupby(['Year', 'cut_category']).count()['Time To live Days'].reset_index()
+UsersPivot = UsersPivot.pivot(index='cut_category',columns='Year',values='Time To live Days')
 ```
 
 - **left join**
