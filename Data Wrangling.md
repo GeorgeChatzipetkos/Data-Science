@@ -208,6 +208,18 @@ data_frames = [df1,df2,df3,df4]
 df = reduce(lambda  left,right: pd.merge(left,right,on=['ID'], how='outer'), data_frames).fillna(0)
 ```
 
+- **calculations & Join on Index**
+
+```python
+df = df1.subtract(df2,axis='index',fill_value = 0)
+
+df1.join(df2) #By default, this performs a left join
+'OR'
+pd.merge(df1, df2, left_index=True, right_index=True) #By default, this performs an inner join
+'OR'
+pd.concat([df1, df2], axis=1) #By default, this performs an outer join
+```
+
 - **Check if value from one df exists in another df**
 
 ```python
