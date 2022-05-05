@@ -211,6 +211,8 @@ df = reduce(lambda  left,right: pd.merge(left,right,on=['ID'], how='outer'), dat
 - **calculations & Join on Index**
 
 ```python
+""" one may choose to specify axis='index' (instead of axis=0) or axis='columns' (instead of axis=1) """
+
 df = df1.subtract(df2,axis='index',fill_value = 0)
 
 df1.join(df2) #By default, this performs a left join
