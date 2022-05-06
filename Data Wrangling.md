@@ -246,6 +246,12 @@ df.insert(3, 'colname', col) # inserts at third column
 name =[x for x in globals() if globals()[x] is df][0]
 ```
 
+- **remove rows with only 0s**
+
+```python
+df = df[np.count_nonzero(df.loc[:, "Col" : "Coln"].values, axis = 1) > 0]
+```
+
 - **Suppress scientific notations**
 
 ```python
