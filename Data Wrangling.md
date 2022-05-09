@@ -204,6 +204,8 @@ df["Country"] = df["Country Code"].map(lambda x: MappingCountry.get(x,x))
 - **outer join multiple dfs**
 
 ```python
+from functools import reduce
+
 data_frames = [df1,df2,df3,df4]
 df = reduce(lambda  left,right: pd.merge(left,right,on=['ID'], how='outer'), data_frames).fillna(0)
 ```
