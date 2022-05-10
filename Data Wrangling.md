@@ -141,7 +141,7 @@ df3 = output_list[2]
 - **create conditional column**
 
 ```python
-df.loc[condition, new_column_name] = new_column_value
+df.loc[condition, 'new_column_name'] = 'new_column_value'
 
 #OR
 
