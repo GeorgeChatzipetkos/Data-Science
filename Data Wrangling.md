@@ -329,6 +329,7 @@ UserDataendDateTime = UserDataendDateTime.strftime("%Y-%m-%d %H:%M:%S")
 from pytz import timezone
 from datetime import datetime, timedelta
 
+df["Registration Time"] = pd.to_datetime(df["Registration Time"], format = "%Y-%m-%d %H:%M:%S")
 df['Registration Date'] = df['Registration Date'].dt.tz_convert('Europe/Athens')
 df['Registration Date'] = pd.to_datetime(df['Registration Date']).dt.tz_localize(None)
 ```
