@@ -330,8 +330,9 @@ from pytz import timezone
 from datetime import datetime, timedelta
 
 df["Registration Time"] = pd.to_datetime(df["Registration Time"], format = "%Y-%m-%d %H:%M:%S")
-df['Registration Date'] = df['Registration Date'].dt.tz_convert('Europe/Athens')
-df['Registration Date'] = pd.to_datetime(df['Registration Date']).dt.tz_localize(None)
+df['Registration Time'] = df['Registration Time'].dt.tz_convert('Europe/Athens')
+df['Registration Time'] = pd.to_datetime(df['Registration Time']).dt.tz_localize(None)
+#df["Registration Date"] = df["Registration Time"].dt.date
 ```
 - **String datetime to timestamp**
 
