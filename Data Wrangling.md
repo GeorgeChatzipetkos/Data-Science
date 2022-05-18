@@ -126,6 +126,19 @@ for row in data:
 df = pd.DataFrame(data=rows_list[1:], index=None, columns=rows_list[0])
 ```
 
+- **adjust autowidth of columns in the excel file**
+
+```python
+import win32com.client as win32
+
+excel = win32.gencache.EnsureDispatch('Excel.Application')
+wb = excel.Workbooks.Open(r'C:\Users\georgiosc\Downloads\FileName.xlsx', ReadOnly=False)
+for ws in wb.Sheets:
+    ws.Columns.AutoFit()
+wb.Save()
+excel.Application.Quit()
+```
+
 - **loop and filter through multiple dfs**
 
 ```python
