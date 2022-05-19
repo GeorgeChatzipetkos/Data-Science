@@ -281,7 +281,7 @@ df.applymap(lambda x: '%.4f' % x)
 
 ```python
 null=pd.DataFrame(df.isnull().sum(),columns=["Missing Values"])
-null["% Missing Values"]=(df.isna().sum()/len(df)*100)
+null["% Missing Values"]=round((df.isna().sum()/len(df)*100),2)
 ```
 
 - **Value counts**
