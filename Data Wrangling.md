@@ -290,7 +290,7 @@ null["% Missing Values"]=round((df.isna().sum()/len(df)*100),2)
 dfCount = pd.concat([
     df['Col'].value_counts(dropna=False),
     df['Col'].value_counts(dropna=False,normalize=True),
-    df['Col'].value_counts(dropna=False,normalize=True).mul(100).round(1).astype(str) + '%'],
+    df['Col'].value_counts(dropna=False,normalize=True).mul(100).round(2).astype(str) + '%'],
     axis= 1)
 dfCount.columns = ['counts', 'Percentage', 'str%']
 ```
