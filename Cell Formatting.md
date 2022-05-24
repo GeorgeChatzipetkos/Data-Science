@@ -13,6 +13,17 @@ wb.Save()
 excel.Application.Quit()
 ```
 
+- **apply filter to all columns**
+
+```python
+import openpyxl as px
+
+wb= px.load_workbook(r'C:\Users\georgiosc\Downloads\Closed Trades 2021-01-01 to 2022-05-24.xlsx')
+ws = wb.active
+ws.auto_filter.ref = ws.dimensions
+wb.save(r'C:\Users\georgiosc\Downloads\Closed Trades 2021-01-01 to 2022-05-24.xlsx')
+```
+
 - **highlight cells**
 
 ```python
