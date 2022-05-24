@@ -24,6 +24,17 @@ ws.auto_filter.ref = ws.dimensions
 wb.save(r'C:\Users\georgiosc\Downloads\Closed Trades 2021-01-01 to 2022-05-24.xlsx')
 ```
 
+- **hide gridlines**
+
+```python
+writer = pd.ExcelWriter(r'C:\Users\georgiosc\Downloads\NAGA Pay Balance '+ endDate +'.xlsx', engine='xlsxwriter')
+BalanceNP_Rev_Tra_Pivot_PerDay.to_excel(writer, sheet_name='Daily Totals')
+workbook = writer.book
+worksheet = writer.sheets["Daily Totals"]
+worksheet.hide_gridlines(2)
+writer.save()
+```
+
 - **highlight cells**
 
 ```python
