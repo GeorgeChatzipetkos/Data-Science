@@ -22,7 +22,6 @@ from openpyxl.styles import Font, PatternFill, Border, Alignment
 
 wb = openpyxl.load_workbook(r'N:\Reporting\04. KPIs\KPIs Report\2022\05. May 2022\Payments - Deposits & Withdrawals\Flexibles\Flexibles '+ yesterday +'.xlsx')
 ws = wb.active
-ws.conditional_formatting.add('B2:C5', CellIsRule(operator='lessThan', formula=['0'],font = Font(color = '00FF0000')))
 for row in ws['A1:C1']:
     for cell in row:
         cell.style = 'Accent1'
