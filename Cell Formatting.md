@@ -1,4 +1,4 @@
-#Cell Formatting
+# Cell Formatting
 
 - **adjust autowidth of columns**
 
