@@ -1,4 +1,33 @@
 # Data-Science
+
+- **outliers**
+
+```python
+# checking the number of outliers in the dataset
+def number_of_outliers(df):
+    
+    df = df.select_dtypes(exclude = 'object')
+    
+    Q1 = df.quantile(0.25)
+    Q3 = df.quantile(0.75)
+    IQR = Q3 - Q1
+    
+    return ((df < (Q1 - 1.5 * IQR)) | (df > (Q3 + 1.5 * IQR))).sum()
+    
+# treat outliers by making them equal to Q3 or Q1
+def lower_upper_range(datacolumn):
+    sorted(datacolumn)
+    Q1,Q3 = np.percentile(datacolumn , [25,75])
+    IQR = Q3 - Q1
+    lower_range = Q1 - (1.5 * IQR)
+    upper_range = Q3 + (1.5 * IQR)
+    return lower_range,upper_range
+  
+for col in columns:  
+    lowerbound,upperbound = lower_upper_range(df[col])
+    df[col]=np.clip(df[col],a_min=lowerbound,a_max=upperbound)
+```
+
 - **Binary Logistic Regression**
 
 ```python
