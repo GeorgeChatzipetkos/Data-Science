@@ -305,7 +305,7 @@ df = pd.read_csv('file.csv', index_col=None,parse_dates=['DateCol'])
 df['date'] = pd.to_datetime(df['event_time']).dt.date
 ```
 
-- **Assign timezone (UTC to Athens time)**
+- **Assign timezone to string Datetime (to Athens time)**
 
 ```python
 from pytz import timezone
@@ -323,7 +323,7 @@ UserDataendDateTime = timezone('Europe/Athens').localize(datetime.strptime(endDa
 UserDataendDateTime = UserDataendDateTime.strftime("%Y-%m-%d %H:%M:%S")
 ```
 
-- **Stip timezone from datetime object**
+- **convert timezone of datetime object**
 
 ```python
 from pytz import timezone
