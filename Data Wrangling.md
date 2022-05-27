@@ -146,6 +146,9 @@ df.loc[condition, 'new_column_name'] = 'new_column_value'
 #OR
 
 df['NewCol'] = np.where((condition),'NewValue',df['OldCol'])
+
+#OR
+df['Category']=df['Monthly Income'].apply(lambda x: 'Graded' if x>=5000 else 'UnGraded')
 ```
 
 - **create multi-conditional column**
