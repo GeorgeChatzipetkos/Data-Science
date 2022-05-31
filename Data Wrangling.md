@@ -1,5 +1,21 @@
 # Data-Wrangling
 
+- **time to complete a task**
+
+```python
+import time
+
+# Record the start time
+start = time.time()
+
+#do some data manipulation
+
+# Record the end time
+end = time.time()
+
+print('Command took ', end - start, ' seconds')
+```
+
 - **view a dataframe in excel**
 
 ```python
