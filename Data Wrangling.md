@@ -261,10 +261,30 @@ IDs = ",".join([str(element) for element in df['User ID'].tolist()])
 df.insert(3, 'colname', col) # inserts at third column
 ```
 
+- **rename column or row**
+
+```python
+df = df.rename(columns={"A": "a", "B": "c"}) #columns
+df = df.rename(index={'Period 2': '% Diff'}) #row
+```
+
+- **manipulation of multiindex dataframe column names**
+
+```python
+df = df.rename(columns={"A": "a", "B": "c"}) #columns
+df = df.rename(index={'Period 2': '% Diff'}) #row
+```
+
 - **Get the name of a df in str format**
 
 ```python
-name =[x for x in globals() if globals()[x] is df][0]
+df.columns = df.columns.swaplevel(0, 1)
+df = df.droplevel(2, axis=1) #remove column level
+df = df.reindex(columns=['Registrations', 'FTDs', 'Conversion %'], level=0) #custom sort
+df = df.rename(columns={'count': 'Number of Deposits','sum': 'Total Deposits EUR','nunique': 'Number of Users'}, level=1) #rename columns
+df.columns.set_levels(['Number of Deposits','Total Deposits EUR','Number of Users'],level=1,inplace=True) #rename levels
+df.column.levels #get column levels
+df.columns = df.columns.rename("Country", level=1) #rename index column if None
 ```
 
 - **remove rows with only 0s**
