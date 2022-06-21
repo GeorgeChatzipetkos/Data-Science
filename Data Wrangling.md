@@ -217,7 +217,9 @@ UsersPivot = pd.pivot_table(Users, values='Time To live Days', index='cut_catego
 
 ```python
 dfPivot = pd.pivot_table(df, index = ['country'], columns = ['Client Type'], values = ['User ID',"Amount EUR"], \
-                         aggfunc = {'User ID':pd.Series.nunique,'Amount EUR':[np.sum,'count']}, fill_value = 0)
+                         aggfunc = {'User ID':pd.Series.nunique, \
+                         'Amount EUR':[np.sum,'count']}, \
+                         fill_value = 0)
 ```
 
 - **left join**
