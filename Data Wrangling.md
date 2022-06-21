@@ -213,6 +213,13 @@ Users['cut_category'] = pd.cut(Users['Time To live Days'], bins=cut_bins, labels
 UsersPivot = pd.pivot_table(Users, values='Time To live Days', index='cut_category', columns='Year', aggfunc='count').reset_index()
 ```
 
+- **pivot table with multipl aggfunc**
+
+```python
+dfPivot = pd.pivot_table(df, index = ['country'], columns = ['Client Type'], values = ['User ID',"Amount EUR"], \
+                         aggfunc = {'User ID':pd.Series.nunique,'Amount EUR':[np.sum,'count']}, fill_value = 0)
+```
+
 - **left join**
 
 ```python
