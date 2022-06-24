@@ -281,6 +281,7 @@ df = df.rename(index={'Period 2': '% Diff'}) #row
 - **manipulation of multiindex dataframe column names**
 
 ```python
+df.loc[:, df.columns.get_level_values(1) == 'RHS'] #select columns
 df.columns = df.columns.swaplevel(0, 1)
 df = df.droplevel(2, axis=1) #remove column level
 df = df.reindex(columns=['Registrations', 'FTDs', 'Conversion %'], level=0) #custom sort
