@@ -438,3 +438,15 @@ OR
 df["diff Seconds"] = df.apply(lambda x: (x["End"] - x["Start"]).total_seconds(), axis = 1) # Diff in seconds
 df["diff text"] = df["diff Seconds"].apply(lambda x: timedelta(seconds = x))
 ```
+
+- **Datetime comparison**
+
+```python
+import datetime
+
+df['Time'] = np.where((df['Time']==datetime.datetime(1970, 1, 1, 0, 0, 0)),df['MT4 OpenTime'],df['Time'])
+
+OR
+
+df['Period'] = np.where(((df["Registration Date"] >= startDate1 + " 00:00:00") & (df["Registration Date"] <= endDate1 + " 23:59:59")),'Period 1','Period 2')
+```
