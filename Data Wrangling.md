@@ -229,6 +229,21 @@ MappingCountry = dict(zip(Countries["Country Code"], Countries["Country"]))
 df["Country"] = df["Country Code"].map(lambda x: MappingCountry.get(x,x))
 ```
 
+- **anti left join**
+
+```python
+# carrying out anti join using merge method
+df3 = df1.merge(df2, on='login', how='left', indicator=True)  
+df = df3.loc[df3['_merge'] == 'left_only', 'login']  
+d = df1[df1['login'].isin(df)]
+
+OR
+
+# carrying out anti join using merge method
+df3 = df1.merge(df2, on='login')  
+df = df1[~df1['login'].isin(df3['login'])]
+```
+
 - **outer join multiple dfs**
 
 ```python
