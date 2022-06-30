@@ -22,3 +22,12 @@ if not os.path.exists(month):
     os.makedirs(month)
 os.chdir(month)
 ```
+
+- **Run .py with arguments from cmd**
+
+```python
+import sys
+
+startDate = sys.argv[1]
+endDate = sys.argv[2]
+```
