@@ -315,7 +315,7 @@ df = df.droplevel(2, axis=1) #remove column level
 df = df.reindex(columns=['Registrations', 'FTDs', 'Conversion %'], level=0) #custom sort
 df = df.rename(columns={'count': 'Number of Deposits','sum': 'Total Deposits EUR','nunique': 'Number of Users'}, level=1) #rename columns
 df.columns.set_levels(['Number of Deposits','Total Deposits EUR','Number of Users'],level=1,inplace=True) #rename levels
-df.column.levels #get column levels
+df.columns.levels #get column levels
 df.columns = df.columns.rename("Country", level=1) #rename index column if None
 ```
 
