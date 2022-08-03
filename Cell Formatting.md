@@ -123,3 +123,22 @@ from openpyxl.formatting.rule import CellIsRule
 
 ws.conditional_formatting.add('B2:C5', CellIsRule(operator='lessThan', formula=['0'],font = Font(color = '00FF0000')))
 ```
+
+- **Comment**
+
+```python
+import win32com.client
+from openpyxl import *
+
+xl = win32com.client.Dispatch("Excel.Application")
+xl.Visible = 1
+wb = xl.Workbooks.Open(r'C:\Users\georgiosc\Downloads\699051 & 2489 CPA.xlsx')
+sheet = wb.ActiveSheet
+sheet.Range("U1").AddComment()
+sheet.Range("U1").Comment.Visible = False
+sheet.Range("U1").Comment.Text("0 CPA if ftd < $500")
+xl.DisplayAlerts = False #suppress the warning dialog
+wb.SaveAs(r'C:\Users\georgiosc\Downloads\699051 & 2489 CPA.xlsx')
+wb.Close()
+xl.Quit()
+```
