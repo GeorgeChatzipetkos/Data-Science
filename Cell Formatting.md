@@ -134,6 +134,7 @@ from openpyxl.comments import Comment
 wb = openpyxl.load_workbook(r'C:\Users\georgiosc\Downloads\cx report.xlsx')
 ws = wb['Revenue']
 comment = Comment(text="client's side", author='George Chatzipetkos')
+comment.width = 300
 ws['W1'].comment = comment
 wb.save(r'C:\Users\georgiosc\Downloads\cx report.xlsx')
 wb.close()
