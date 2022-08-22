@@ -443,6 +443,12 @@ OR
 df["Date"] = df["Date"].apply(lambda x: datetime.fromtimestamp(x).strftime("%Y-%m-%d"))
 ```
 
+- **Remove miliseconds from datetime**
+
+```python
+df['datetime'] = df['datetime'].apply(lambda x: x.replace(microsecond = 0))
+```
+
 - **Year-Month from date**
 
 ```python
