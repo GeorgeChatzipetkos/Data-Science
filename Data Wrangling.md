@@ -303,6 +303,7 @@ df.insert(3, 'colname', col) # inserts at third column
 ```python
 df = df.rename(columns={"A": "a", "B": "c"}) #columns
 df.columns.values[0:2] = ['country',"UTM Campaign"] #columns by position
+df.rename(columns={df.columns[2]: 'Courses_Duration'},inplace=True) #columns by position
 df = df.rename(index={'Period 2': '% Diff'}) #row
 ```
 
