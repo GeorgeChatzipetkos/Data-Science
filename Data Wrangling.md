@@ -283,7 +283,11 @@ pd.concat([df1, df2], axis=1) #By default, this performs an outer join
 - **Check if value from one df exists in another df**
 
 ```python
-Df1.assign(InDf2=Df1.Col.isin(Df2.Col).astype(int))
+Df1.assign(InDf2=Df1.Col.isin(Df2.Col).astype(int))   #creates a new column with 1 and 0 named InDf2
+
+or
+
+BalanceFTDs = Balance.loc[Balance["User ID"].isin(FTDs["User ID"].values)]   #filters based on values from another df column
 ```
 
 - **Textjoin a df column**
