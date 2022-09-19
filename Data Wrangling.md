@@ -56,6 +56,27 @@ combined_excel = pd.concat([pd.read_excel(f, header = 0).assign(FileName=os.path
 combined_excel.to_excel(r'C:\Users\file.xlsx', index=False)
 ```
 
+- **Combine multiple Excel files to multiple worksheets**
+
+```python
+import glob
+import os
+import pandas as pd
+  
+#list with all .xlsx files in the folder
+all_files = [i for i in glob.glob(r'C:\Users\georgiosc\Downloads\test\*.xlsx')]
+
+output_list = []
+for f in all_files:
+    df = pd.read_excel(f, header = 0).assign(FileName=os.path.basename(f))
+    output_list.append(df)
+
+writer = pd.ExcelWriter(r'C:\Users\georgiosc\Downloads\test\pandas_multiple.xlsx', engine='xlsxwriter')
+for df in output_list:
+    df.to_excel(writer, sheet_name=df.FileName[0], index = False)
+writer.save()
+```
+
 - **Combine Multiple Excel Worksheets**
 
 ```python
