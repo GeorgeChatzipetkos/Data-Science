@@ -101,18 +101,6 @@ ncols = xl.book.sheets()[0].ncols
 df = xl.parse(0, usecols=[0, 1, ncols-1])
 ```
 
-- **Replace file names in a folder**
-
-```python
-import os
-
-path = os.chdir(r'N:\...') # set current working directory above to the required path
-
-filenames = os.listdir(path)
-for filename in filenames:
-    os.rename(filename, filename.replace("nm", "NM").replace("mt4 NM", "NM").replace("mt5 NM", "NM").replace("NM mt4", "NM").replace("NM mt5", "NM"))
-```
-
 - **Split to multiple Excel sheets (group by existing column)**
 
 ```python
