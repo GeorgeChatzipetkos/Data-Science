@@ -61,3 +61,14 @@ import sys
 startDate = sys.argv[1]
 endDate = sys.argv[2]
 ```
+
+- **Search .py files under all subdirectories of the current directory**
+
+```python
+import glob
+
+dir_path = '**depos*.py'
+
+for file in glob.glob(dir_path, recursive=True):
+    print(file)
+```
