@@ -25,6 +25,20 @@ for filename in filenames:
         os.rename(filename, filename[:filename.index(sub_str2) + len(sub_str2)] + ' NM' + filename[filename.index('.'):])
 ```
 
+- **Convert all .csv to .xlsx in a folder**
+
+```python
+import pandas as pd
+import os
+from glob import glob
+
+for csv_file in glob(r"N:\Reporting\Other\Open Trades 2022\09. September\*.csv"):
+   print(csv_file)
+   df = pd.read_csv(csv_file,engine="python",delimiter=";", header = 1)
+   xlsx_file = os.path.splitext(csv_file)[0] + '.xlsx'
+   df.to_excel(xlsx_file, index=None, header=True)
+```
+
 - **Create path for Year & Month**
 
 ```python
