@@ -1,5 +1,22 @@
 # Data-Science
 
+- **Permutations and Combinations **
+
+```python
+import pandas as pd    
+import itertools
+
+#x = [1, 2, 3, 4, 5, 6]
+x = [*range(1,6)]
+
+resultList = [value for value in itertools.product(x, repeat=3)] # Permutations: order matters, Repeats allowed,  formula =  n**r , AA AB AC AD BA BB BC BD CA CB CC CD DA DB DC DD
+resultList = [value for value in itertools.permutations(x, r=3)] # Permutations: order matters, no Repeats, formula = n!/(n-r)! , 	AB AC AD BA BC BD CA CB CD DA DB DC
+resultList = [value for value in itertools.combinations_with_replacement(x, r=3)] # Combinations: order doesn't matter, Repeats allowed, formula = (r+n-1)!/r!(n-1)!, AA AB AC AD BB BC BD CC CD DD
+resultList = [value for value in itertools.combinations(x, r=3)] # Combinations: order doesn't matter, no Repeats, formula = n!/r!(n-r)!, AB AC AD BC BD CD
+
+df = pd.DataFrame(resultList)
+```
+
 - **outliers**
 
 ```python
