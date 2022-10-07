@@ -6,7 +6,7 @@
 import pandas as pd    
 import itertools
 
-#x = [1, 2, 3, 4, 5, 6]
+#x = [1, 2, 3, 4, 5]
 x = [*range(1,6)]
 
 # Permutations: order matters, Repeats allowed,  formula =  n**r , AA AB AC AD BA BB BC BD CA CB CC CD DA DB DC DD
