@@ -1,6 +1,6 @@
 # Data-Science
 
-- **Permutations and Combinations **
+- **Permutations and Combinations**
 
 ```python
 import pandas as pd    
