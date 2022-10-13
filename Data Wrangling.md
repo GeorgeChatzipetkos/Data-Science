@@ -101,6 +101,17 @@ ncols = xl.book.sheets()[0].ncols
 df = xl.parse(0, usecols=[0, 1, ncols-1])
 ```
 
+- **Split to multiple Excel sheets (n chunks)**
+
+- ```python
+list_df = np.array_split(df, 3)
+
+writer = pd.ExcelWriter(r'C:\Users\georgiosc\Downloads\test\bonus.xlsx', engine='xlsxwriter')
+for df in list_df:
+    df.to_excel(writer, index = False)
+writer.save()
+```
+
 - **Split to multiple Excel sheets (group by existing column)**
 
 ```python
