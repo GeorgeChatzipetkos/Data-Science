@@ -103,12 +103,10 @@ df = xl.parse(0, usecols=[0, 1, ncols-1])
 
 - **Split to multiple Excel sheets (n chunks)**
 
-- ```python
-list_df = np.array_split(df, 3)
-
-writer = pd.ExcelWriter(r'C:\Users\georgiosc\Downloads\test\bonus.xlsx', engine='xlsxwriter')
-for df in list_df:
-    df.to_excel(writer, index = False)
+```python
+writer = pd.ExcelWriter(r'C:\Users\georgiosc\Downloads\bonus.xlsx', engine='xlsxwriter')
+for i,df in enumerate(list_df):
+    df.to_excel(writer,sheet_name=str(i), index = False)
 writer.save()
 ```
 
