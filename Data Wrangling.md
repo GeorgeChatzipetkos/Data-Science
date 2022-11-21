@@ -359,9 +359,6 @@ df = df[np.count_nonzero(df.loc[:, "Col" : "Coln"].values, axis = 1) > 0]
 - **Drop Rows with NaN Values**
 
 ```python
-# filter out NaN values based on a column
-df2 = df[df['Col'].notna()]
-
 # Drop all rows with NaN values
 df2=df.dropna()
 df2=df.dropna(axis=0)
@@ -374,6 +371,8 @@ df2=df.dropna(how='all')
 
 # Drop rows that has NaN values on selected columns
 df2=df.dropna(subset=['Courses','Fee'])
+
+df2 = df[df['Col'].notna()]
 
 # With threshold, 
 # Keep only the rows with at least 2 non-NA values.
