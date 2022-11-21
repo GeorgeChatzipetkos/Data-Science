@@ -356,6 +356,33 @@ name =[x for x in globals() if globals()[x] is df][0]
 df = df[np.count_nonzero(df.loc[:, "Col" : "Coln"].values, axis = 1) > 0]
 ```
 
+- **Drop Rows with NaN Values**
+
+```python
+# filter out NaN values based on a column
+df2 = df[df['Col'].notna()]
+
+# Drop all rows with NaN values
+df2=df.dropna()
+df2=df.dropna(axis=0)
+
+# Reset index after drop
+df2=df.dropna().reset_index(drop=True)
+
+# Drop row that has all NaN values
+df2=df.dropna(how='all')
+
+# Drop rows that has NaN values on selected columns
+df2=df.dropna(subset=['Courses','Fee'])
+
+# With threshold, 
+# Keep only the rows with at least 2 non-NA values.
+df2=df.dropna(thresh=2)
+
+# Drop Rows with NaN Values inplace
+df.dropna(inplace=True)
+```
+
 - **Suppress scientific notations**
 
 ```python
