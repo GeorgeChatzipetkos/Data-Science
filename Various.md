@@ -1,5 +1,11 @@
 # Various
 
+- **Pass the path to a variable**
+
+```python
+path_dir: str = r"C:\Users\sselt\Documents\blog_demo"
+```
+
 - **Replace file names in a folder**
 
 ```python
