@@ -177,6 +177,17 @@ for row in data:
 df = pd.DataFrame(data=rows_list[1:], index=None, columns=rows_list[0])
 ```
 
+- **add subtotals row to pivot table**
+
+```python
+# after creating a pivot table without resetting the index
+
+PivotTable = pd.concat([
+    y.append(y.sum().rename((x, 'Total')))
+    for x, y in pivotTable.groupby(level=0)
+    ]).append(PivotTable.sum().rename(('Grand', 'Total')))
+```
+
 - **loop and filter through multiple dfs**
 
 ```python
