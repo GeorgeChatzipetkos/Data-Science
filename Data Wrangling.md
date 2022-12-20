@@ -492,6 +492,9 @@ from datetime import date
 
 endDate = "2022-02-28"
 date_object = datetime.strptime(endDate, '%Y-%m-%d').date()
+
+#OR
+df["Date"] = pd.to_datetime(df['String_Date'], format = '%d %B %Y')
 ```
 
 - **Timestamp to Datetime or date**
