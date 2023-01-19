@@ -25,6 +25,14 @@ import xlwings as xw
 xw.view(df)
 ```
 
+- **Check for duplicates**
+
+```python
+df["Col"].is_unique
+#OR
+df['Col'].duplicated().any()
+```
+
 - **append df to existing worksheet in excel**
 
 ```python
