@@ -388,8 +388,11 @@ df2=df.dropna().reset_index(drop=True)
 # Drop row that has all NaN values
 df2=df.dropna(how='all')
 
-# Drop rows that has NaN values on selected columns
+# Drop rows that has NaN values in any of the selected columns
 df2=df.dropna(subset=['Courses','Fee'])
+
+# Drop rows that has NaN values in all of the selected columns
+df2=df.dropna(subset=['Courses','Fee'], how='all')
 
 df2 = df[df['Col'].notna()]
 
