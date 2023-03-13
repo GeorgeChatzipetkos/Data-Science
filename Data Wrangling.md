@@ -33,6 +33,15 @@ df["Col"].is_unique
 df['Col'].duplicated().any()
 ```
 
+- **chain multiple functions into a single operation**
+
+```python
+dfNew = (df.pipe(drop_duplicates).
+                      pipe(fillna(0)).
+                      pipe(sort_values(by=['Brand'], inplace=True, ascending=False))
+            )
+```
+
 - **append df to existing worksheet in excel**
 
 ```python
