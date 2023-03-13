@@ -33,6 +33,12 @@ df["Col"].is_unique
 df['Col'].duplicated().any()
 ```
 
+- **return the nth row from each group**
+
+```python
+df.groupby("Category").nth(5)
+```
+
 - **chain multiple functions into a single operation**
 
 ```python
