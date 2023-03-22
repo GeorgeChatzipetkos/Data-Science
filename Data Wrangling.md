@@ -376,6 +376,8 @@ df = df.rename(columns={'count': 'Number of Deposits','sum': 'Total Deposits EUR
 df.columns.set_levels(['Number of Deposits','Total Deposits EUR','Number of Users'],level=1,inplace=True) #rename levels
 df.columns.levels #get column levels
 df.columns = df.columns.rename("Country", level=1) #rename index column if None
+df.columns = df.columns.map('_'.join) #combine/merge the levels (can use any symbol instead of _)
+df.columns = [f'{i}_{j}' for i,j in df.columns] #combine/merge the levels (can use any symbol instead of _)
 ```
 
 - **Get the name of a df in str format**
