@@ -253,6 +253,12 @@ choices = [0, 10, 20, 30, 40, 50, 60]
 Balance['CPA'] = np.select(conditions, choices, default=0)
 ```
 
+- **return the first non-null value between 2 columns**
+
+```python
+df['new_column_name'] = df['A'].combine_first(df['B'])
+```
+
 - **df with COUNTIFS**
 
 ```python
