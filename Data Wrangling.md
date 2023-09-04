@@ -48,6 +48,24 @@ dfNew = (df.pipe(drop_duplicates).
             )
 ```
 
+- **create a df from each sheet of an excel workbook**
+
+```python
+#read excel 
+excel_file = pd.ExcelFile(r'C:\Users\GeorgiosChatzipetkos\Downloads\aff data.xlsx')
+sheet_names = excel_file.sheet_names
+
+dfs = []
+for sheet_name in sheet_names:
+    dff = excel_file.parse(sheet_name)
+    dfs.append(dff)
+
+df1 = dfs[0]  
+df2 = dfs[1]
+df3 = dfs[2]
+
+```
+
 - **append df to existing worksheet in excel**
 
 ```python
