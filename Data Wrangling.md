@@ -33,6 +33,19 @@ df["Col"].is_unique
 df['Col'].duplicated().any()
 ```
 
+- **Select duplicates**
+
+```python
+# Selecting duplicate rows except first occurrence based on all columns
+duplicate = df[df.duplicated()]
+
+# Selecting duplicate rows based on 'City' column
+duplicate = df[df.duplicated('City')]
+
+# Selecting duplicate rows based on list of column names
+duplicate = df[df.duplicated(['Name', 'Age'])]
+```
+
 - **return the nth row from each group**
 
 ```python
