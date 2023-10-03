@@ -611,6 +611,9 @@ df["diff text"] = df["diff Seconds"].apply(lambda x: timedelta(seconds = x))
 
 ```python
 df['diff_days'] = (df['end_date'] - df['start_date']) / np.timedelta64(1, 'D') #'W' or 'M' or 'Y'
+#OR
+from datetime import datetime
+df['DaysDifference'] = (datetime.now() - df['DateColumn']).dt.days
 ```
 
 - **Datetime comparison**
