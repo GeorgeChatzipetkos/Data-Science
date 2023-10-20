@@ -90,6 +90,7 @@ writer = pd.ExcelWriter(r'C:\Users\georgiosc\Downloads\MiFIR_2022.xlsx', engine=
 writer.book = workbook
 df.to_excel(writer,sheet_name= 'Sheet1',startrow=writer.sheets['Sheet1'].max_row, index=False, header=False)
 writer.save()
+writer.close()
 ```
 
 - **Combine multiple Excel files**
