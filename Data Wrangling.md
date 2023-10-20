@@ -88,10 +88,8 @@ from openpyxl import load_workbook
 workbook = load_workbook(r'C:\Users\georgiosc\Downloads\MiFIR_2022.xlsx')
 writer = pd.ExcelWriter(r'C:\Users\georgiosc\Downloads\MiFIR_2022.xlsx', engine='openpyxl')
 writer.book = workbook
-writer.sheets = dict((ws.title, ws) for ws in workbook.worksheets)
-df.to_excel(writer,sheet_name= 'MiFIR_2022',startrow=len(Olddf)+1, index=False, header=False)
+df.to_excel(writer,sheet_name= 'Sheet1',startrow=writer.sheets['Sheet1'].max_row, index=False, header=False)
 writer.save()
-writer.close()
 ```
 
 - **Combine multiple Excel files**
