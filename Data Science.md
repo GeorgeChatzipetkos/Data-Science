@@ -48,6 +48,42 @@ for col in columns:
     lowerbound,upperbound = lower_upper_range(df[col])
     df[col]=np.clip(df[col],a_min=lowerbound,a_max=upperbound)
 ```
+- **Probability Tree**
+
+```python
+import pandas as pd
+
+# Create a DataFrame representing the probability tree
+data = {
+    'Parent': ['Root', 'Root', 'A', 'A', 'B', 'B', 'C', 'C'],
+    'Event': ['A', 'D', 'B', 'C', 'D', 'E', 'F', 'G'],
+    'Probability': [1, 1, 0.6, 0.4, 0.7, 0.3, 0.7, 0.3]
+}
+
+df = pd.DataFrame(data)
+
+# Function to calculate the final ratios recursively
+def calculate_final_ratios(node, current_ratio):
+    if node.empty:
+        return
+    leaf_nodes = df[df['Parent'] == node['Event']]
+    if leaf_nodes.empty:
+        final_ratios[node['Event']] = current_ratio * node['Probability']
+    else:
+        for _, child in leaf_nodes.iterrows():
+            calculate_final_ratios(child, current_ratio * node['Probability'])
+
+# Initialize a dictionary to store final ratios
+final_ratios = {}
+
+# Calculate the final ratios starting from the root ('Root')
+root_node = df[df['Parent'] == 'Root'].iloc[0]
+calculate_final_ratios(root_node, 1.0)
+
+# Print the final ratios
+for event, ratio in final_ratios.items():
+    print(f"{event}: {ratio:.2f}")
+```
 
 - **Binary Logistic Regression**
 
