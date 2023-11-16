@@ -606,10 +606,12 @@ df["diff Seconds"] = df.apply(lambda x: (x["End"] - x["Start"]).total_seconds(),
 df["diff text"] = df["diff Seconds"].apply(lambda x: timedelta(seconds = x))
 ```
 
-- **Time Diff in Days**
+- **Time Diff in Days / Months**
 
 ```python
 df['diff_days'] = (df['end_date'] - df['start_date']) / np.timedelta64(1, 'D') #'W' or 'M' or 'Y'
+#OR
+df['diff_months'] = (pd.Timestamp('today') - df['Registration Timestamp']) // pd.Timedelta('30D')
 #OR
 from datetime import datetime
 df['DaysDifference'] = (datetime.now() - df['DateColumn']).dt.days
