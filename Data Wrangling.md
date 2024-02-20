@@ -248,6 +248,14 @@ output_list = []
 for df in [df1, df2, df3]:
     df = df.loc[df["Country"].str.contains("Greece")]
     output_list.append(df)
+
+#OR
+
+for idx,df in enumerate(dataframes):
+    df = df[['Player ID','VIP Status', 'Registration Date','Brand Name','Affiliate ID','Self Excluded','Is Banned','Is Bonus Abuser']]
+    
+    # Assign the modified DataFrame back to the list
+    dataframes[idx] = df
   
 df1 = output_list[0]
 df2 = output_list[1]  
