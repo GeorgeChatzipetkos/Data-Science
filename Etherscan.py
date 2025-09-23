@@ -7,8 +7,8 @@ import numpy as np
 from urllib.request import Request, urlopen
 from bs4 import BeautifulSoup as soup
 
-startDate = "2022-01-01" 
-endDate = "2022-03-15"
+startDate = "2025-01-01" 
+endDate = "2025-03-15"
 
 eth = Etherscan('SE3XXRIHR5C2S392BI7C87NQY8PSKCW1N4')
 
@@ -64,6 +64,7 @@ for i in range(1,101,1):
          continue
 
 TopAccounts = pd.concat(dfs)
+
 
 
 
