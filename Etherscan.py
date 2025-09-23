@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Mar 16 12:33:57 2022
-
-@author: georgiosc
-"""
-
 # https://stevenkyle2013.medium.com/using-etherscan-python-library-with-etherscan-io-api-to-access-ethereum-data-cd44c3e34190
 # https://github.com/pcko1/etherscan-python/tree/master/logs/standard
 
@@ -71,5 +64,6 @@ for i in range(1,101,1):
          continue
 
 TopAccounts = pd.concat(dfs)
+
 
 
