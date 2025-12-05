@@ -1,3 +1,1 @@
-"print('keep this line here locally')" 
-"print('New local change')" 
-"print('edit file online')" 
+"print('Hello from the new file!')" 
